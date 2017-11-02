@@ -12,8 +12,8 @@ func _ready():
 
 func _physics_process(delta):
 	isJumping = !get_node("PlayerBody/Rays").isOnFloor
-	get_node("PlayerBody").translation.x = get_node("PlayerPos").translation.x
-	get_node("PlayerBody").translation.z = get_node("PlayerPos").translation.z
+	get_node("PlayerBody").translation.x = get_node("PlayerPos").translation.x #Travando o X do Player
+	get_node("PlayerBody").translation.z = get_node("PlayerPos").translation.z #Travando o Z do Player
 	if Input.is_action_pressed("ui_right") && !isJumping:
 		yPivot = min(90,yPivot + (delta * speed) )
 	if Input.is_action_pressed("ui_left") && !isJumping:
@@ -27,12 +27,25 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shot"):
 		shotBall()
 	
+	if Input.is_action_just_pressed("Reset"):
+		get_tree().reload_current_scene()
+	
 func shotBall():
-	var target = get_node("ShotAim").global_transform.origin
 	var ball = ballClass.instance()
 	ball.global_transform.origin = get_node("PlayerBody/Shot").global_transform.origin
-	look_at(target,Vector3(0,1,0))
-	get_parent().add_child(ball)
-	ball.apply_impulse(Vector3() , Vector3(0,1,-1) * 8)
+#	ball.transform.origin = get_node("PlayerBody/Shot").transform.origin
+	get_parent().call_deferred("add_child",ball)
+	var target = get_node("ShotAim").global_transform.origin
+	var shot = get_node("PlayerBody/Shot").global_transform.origin
+	var impulse = shot.linear_interpolate(target,0.5).normalized()
+#	var impulse = target.linear_interpolate(shot,0.5).normalized()
+	impulse.x = impulse.x * -1
+	impulse.z = impulse.z * -1
+	impulse.y = impulse.y * 3.5
+	var lookDir = ball.global_transform.looking_at(target,Vector3(0,0,0))
+	ball.global_transform.basis = lookDir.basis
+#	ball.transform.looking_at(target,Vector3(0,1,0))
+	var foward = -ball.global_transform.basis.z.normalized()
+	ball.apply_impulse(Vector3() , foward * 30)
 	pass
 
