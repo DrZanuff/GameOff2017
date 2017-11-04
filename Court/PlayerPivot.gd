@@ -3,10 +3,8 @@ extends Position3D
 var isJumping = false
 var yPivot = 0
 var speed = 25
-var ballClass
 
 func _ready():
-	ballClass = load("res://Court/Ball.tscn")
 	set_physics_process(true)
 	pass
 
@@ -31,21 +29,24 @@ func _physics_process(delta):
 		get_tree().reload_current_scene()
 	
 func shotBall():
-	var ball = ballClass.instance()
-	ball.global_transform.origin = get_node("PlayerBody/Shot").global_transform.origin
+	var b = get_parent().balls.back()
+#	get_parent().balls.push_front(get_parent().balls.back())
+	b.sleeping = false
+	b.global_transform.origin = get_node("PlayerBody/Shot").global_transform.origin
+#	get_parent().balls.pop_back()
 #	ball.transform.origin = get_node("PlayerBody/Shot").transform.origin
-	get_parent().call_deferred("add_child",ball)
-	var target = get_node("ShotAim").global_transform.origin
-	var shot = get_node("PlayerBody/Shot").global_transform.origin
-	var impulse = shot.linear_interpolate(target,0.5).normalized()
-#	var impulse = target.linear_interpolate(shot,0.5).normalized()
-	impulse.x = impulse.x * -1
-	impulse.z = impulse.z * -1
-	impulse.y = impulse.y * 3.5
-	var lookDir = ball.global_transform.looking_at(target,Vector3(0,0,0))
-	ball.global_transform.basis = lookDir.basis
-#	ball.transform.looking_at(target,Vector3(0,1,0))
-	var foward = -ball.global_transform.basis.z.normalized()
-	ball.apply_impulse(Vector3() , foward * 30)
+#	get_parent().call_deferred("add_child",ball)
+#	var target = get_node("ShotAim").global_transform.origin
+#	var shot = get_node("PlayerBody/Shot").global_transform.origin
+#	var impulse = shot.linear_interpolate(target,0.5).normalized()
+##	var impulse = target.linear_interpolate(shot,0.5).normalized()
+#	impulse.x = impulse.x * -1
+#	impulse.z = impulse.z * -1
+#	impulse.y = impulse.y * 3.5
+#	var lookDir = ball.global_transform.looking_at(target,Vector3(0,0,0))
+#	ball.global_transform.basis = lookDir.basis
+##	ball.transform.looking_at(target,Vector3(0,1,0))
+#	var foward = -ball.global_transform.basis.z.normalized()
+#	ball.apply_impulse(Vector3() , foward * 30)
 	pass
 

@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Court/Ball.gd" type="Script" id=1]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -89,12 +91,13 @@ continuous_cd = false
 contacts_reported = 0
 contact_monitor = false
 sleeping = false
-can_sleep = true
+can_sleep = false
 axis_lock = 0
 linear_velocity = Vector3( 0, 0, 0 )
 linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = 50.0
+script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Linear" ]
 
 [node name="Model" type="Spatial" parent="."]
@@ -126,6 +129,7 @@ disabled = false
 
 [node name="BallArea" type="Area" parent="."]
 
+editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
