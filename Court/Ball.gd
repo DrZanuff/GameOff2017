@@ -8,8 +8,9 @@ func _ready():
 	set_physics_process(true)
 	pass
 
-func _process(delta):
-#	if wake == false:
-#		wake = true
-#		sleeping = true
+func _physics_process(delta):
+	rotate_x(5 * delta)
+	if wake == false:
+		wake = true
+		sleeping = true
 	pass

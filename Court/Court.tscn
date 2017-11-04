@@ -198,7 +198,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerPivot/PlayerBody"]
 
-transform = Transform( 0.336413, 0, 0, 0, -1.32758e-08, -0.303715, 0, 0.334499, -1.46214e-08, 0, 0.101273, 0 )
+transform = Transform( 0.336413, 0, 0, 0, -1.32758e-008, -0.303715, 0, 0.334499, -1.46214e-008, 0, 0.101273, 0 )
 shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
@@ -252,7 +252,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570736, -0.587349 )
 
 [node name="ShotAim" type="Position3D" parent="PlayerPivot"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.76461, 7.24726 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.39931, 6.47628 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Lights" type="Spatial" parent="."]
@@ -315,7 +315,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.850988, 6.00368 )
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836563, 0, 0 )
 
-[node name="Ball" parent="Rack" instance=ExtResource( 6 )]
+[node name="Ball3" parent="Rack" instance=ExtResource( 6 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78387, 0, 0 )
 
