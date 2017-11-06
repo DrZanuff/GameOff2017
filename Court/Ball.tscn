@@ -1,16 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Court/Ball.gd" type="Script" id=1]
+[ext_resource path="res://Court/BallTexture.jpg" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
 
 code = "shader_type spatial;
 uniform float alpha = 0.0;
 uniform vec3 color = vec3(1,1,0.5);
+uniform sampler2D tex : hint_albedo;
 
 void fragment(){
-	ALBEDO = color;
+	vec3 Cor = color;
+	vec3 t = texture(tex,UV).rgb;
+	ALBEDO = mix(Cor,t,0.7);
 	ALPHA = alpha;
+	
 	}"
 _sections_unfolded = [ "Resource" ]
 
@@ -20,6 +25,7 @@ render_priority = 0
 shader = SubResource( 1 )
 shader_param/alpha = 1.0
 shader_param/color = Vector3( 1, 0.270588, 0 )
+shader_param/tex = ExtResource( 2 )
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="SphereMesh" id=3]
@@ -137,6 +143,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
+_sections_unfolded = [ "Geometry" ]
 
 [node name="MeshInstance2" type="MeshInstance" parent="Model"]
 

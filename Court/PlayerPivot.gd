@@ -30,21 +30,15 @@ func _physics_process(delta):
 	
 	
 func shotBall():
-	var b = get_parent().balls.back()
-	get_parent().balls.push_front(get_parent().balls.back())
+	var b = get_parent().balls.back() #Acess the last ball of the Array
+	get_parent().balls.push_front(get_parent().balls.back()) #Reoder the Array
 	get_parent().balls.pop_back()
-	b.global_transform = get_node("PlayerBody/Shot").global_transform
-	var target = get_node("ShotAim").global_transform.origin
-#	var shot = get_node("PlayerBody/Shot").global_transform.origin
-#	var impulse = shot.linear_interpolate(target,0.5).normalized()
-##	var impulse = target.linear_interpolate(shot,0.5).normalized()
-#	impulse.x = impulse.x * -1
-#	impulse.z = impulse.z * -1
-#	impulse.y = impulse.y * 3.5
-	var lookDir = b.global_transform.looking_at(target,Vector3(0,1,0))
-	b.global_transform.basis = lookDir.basis
-##	ball.transform.looking_at(target,Vector3(0,1,0))
-	var foward = -b.global_transform.basis.z.normalized()
-	b.apply_impulse(Vector3() , foward * 11)
+	b.wake()
+	b.global_transform = get_node("PlayerBody/Shot").global_transform #Set the position of the current ball to the player
+	var target = get_node("ShotAim").global_transform.origin #Assing a target
+	var lookDir = b.global_transform.looking_at(target,Vector3(0,1,0)) #Find an angle to look at
+	b.global_transform.basis = lookDir.basis #Set the angle of the ball from lookDir 
+	var foward = -b.global_transform.basis.z.normalized() #Get the foward of the ball
+	b.apply_impulse(Vector3() , foward * 11) #Apply an impulse at the foward of the ball
 	pass
 
