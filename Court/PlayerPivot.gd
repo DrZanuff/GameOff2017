@@ -3,17 +3,15 @@ extends Position3D
 var isJumping = false
 var yPivot = 0
 var speed = 25
-var ballClass
 
 func _ready():
-	ballClass = load("res://Court/Ball.tscn")
 	set_physics_process(true)
 	pass
 
 func _physics_process(delta):
 	isJumping = !get_node("PlayerBody/Rays").isOnFloor
-	get_node("PlayerBody").translation.x = get_node("PlayerPos").translation.x
-	get_node("PlayerBody").translation.z = get_node("PlayerPos").translation.z
+	get_node("PlayerBody").translation.x = get_node("PlayerPos").translation.x #Travando o X do Player
+	get_node("PlayerBody").translation.z = get_node("PlayerPos").translation.z #Travando o Z do Player
 	if Input.is_action_pressed("ui_right") && !isJumping:
 		yPivot = min(90,yPivot + (delta * speed) )
 	if Input.is_action_pressed("ui_left") && !isJumping:
@@ -27,12 +25,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shot"):
 		shotBall()
 	
+	if Input.is_action_just_pressed("Reset"):
+		get_tree().reload_current_scene()
+	
+	
 func shotBall():
-	var target = get_node("ShotAim").global_transform.origin
-	var ball = ballClass.instance()
-	ball.global_transform.origin = get_node("PlayerBody/Shot").global_transform.origin
-	look_at(target,Vector3(0,1,0))
-	get_parent().add_child(ball)
-	ball.apply_impulse(Vector3() , Vector3(0,1,-1) * 8)
+	var b = get_parent().balls.back() #Acess the last ball of the Array
+	get_parent().balls.push_front(get_parent().balls.back()) #Reoder the Array
+	get_parent().balls.pop_back()
+	b.wake()
+	b.global_transform = get_node("PlayerBody/Shot").global_transform #Set the position of the current ball to the player
+	var target = get_node("ShotAim").global_transform.origin #Assing a target
+	var lookDir = b.global_transform.looking_at(target,Vector3(0,1,0)) #Find an angle to look at
+	b.global_transform.basis = lookDir.basis #Set the angle of the ball from lookDir 
+	var foward = -b.global_transform.basis.z.normalized() #Get the foward of the ball
+	b.apply_impulse(Vector3() , foward * 11) #Apply an impulse at the foward of the ball
 	pass
 
