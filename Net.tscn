@@ -1,0 +1,1519 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="SphereMesh" id=5]
+
+radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[sub_resource type="CylinderMesh" id=6]
+
+top_radius = 1.0
+bottom_radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 4
+
+[sub_resource type="BoxShape" id=7]
+
+extents = Vector3( 1, 1, 1 )
+
+[node name="Net" type="Spatial"]
+
+editor/display_folded = true
+
+[node name="Net1" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 0.985408, -0.170208, 0, 0.170208, 0.985408, 0, 0, 0, 1, -0.812391, -0.15025, 0 )
+
+[node name="NetBase" type="RigidBody" parent="Net1"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net1/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net1"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net1/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net1/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net1"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net1/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net1/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PosNet" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.645137, -0.60283, 0.228383 )
+
+[node name="PinJoint" type="PinJoint" parent="PosNet"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095579, 0.0204548, -0.164171 )
+nodes/node_a = NodePath("../../Net1/NetDown")
+nodes/node_b = NodePath("../NetCross")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "nodes" ]
+
+[node name="NetCross" type="RigidBody" parent="PosNet"]
+
+editor/display_folded = true
+transform = Transform( 0.00239563, -0.468185, -0.883627, 0.999938, 0.0107329, -0.00297582, 0.0108771, -0.883565, 0.468182, -0.018014, 0.0117676, -0.0205443 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="PosNet/NetCross"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.0329749, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="PosNet/NetCross"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.0309514, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="PosNet"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104427, 0.00621688, 0.181345 )
+nodes/node_a = NodePath("../NetCross")
+nodes/node_b = NodePath("../../Net5/NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "nodes" ]
+
+[node name="Net5" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 0.753847, -0.144674, 0.640924, 0.218307, 0.975191, -0.0366427, -0.619723, 0.167541, 0.766729, -0.588362, -0.15025, 0.541331 )
+
+[node name="NetBase" type="RigidBody" parent="Net5"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net5/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net5"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net5"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net5/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net5/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net5"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net5"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net5/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net5/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PosNet2" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 0.757233, 0, 0.653145, 0, 1, 0, -0.653145, 0, 0.757233, -0.246851, -0.60283, 0.593364 )
+
+[node name="PinJoint" type="PinJoint" parent="PosNet2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095579, 0.0204548, -0.164171 )
+nodes/node_a = NodePath("../../Net5/NetDown")
+nodes/node_b = NodePath("../NetCross")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "nodes" ]
+
+[node name="NetCross" type="RigidBody" parent="PosNet2"]
+
+editor/display_folded = true
+transform = Transform( 0.00239563, -0.468185, -0.883627, 0.999938, 0.0107329, -0.00297582, 0.0108771, -0.883565, 0.468182, -0.018014, 0.0117676, -0.0205443 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="PosNet2/NetCross"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.0329749, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="PosNet2/NetCross"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.0309514, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="PosNet2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104427, 0.00621688, 0.181345 )
+nodes/node_a = NodePath("../NetCross")
+nodes/node_b = NodePath("../../Net2/NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "nodes" ]
+
+[node name="Net2" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.973767, -0.227548, 0, 0.227548, 0.973767, 0.0486654, -0.15025, 0.787055 )
+
+[node name="NetBase" type="RigidBody" parent="Net2"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net2/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net2"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net2/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net2/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net2"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net2/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net2/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Net3" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.775246, -0.15025, -0.00576032 )
+
+[node name="NetBase" type="RigidBody" parent="Net3"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net3/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net3"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net3/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net3/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net3"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net3/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net3/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Net4" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0486654, -0.15025, -0.742386 )
+
+[node name="NetBase" type="RigidBody" parent="Net4"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net4/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net4"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net4/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net4/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net4"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net4/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net4/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Net6" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.580093, -0.15025, 0.541331 )
+
+[node name="NetBase" type="RigidBody" parent="Net6"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net6/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net6"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net6"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net6/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net6/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net6"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net6"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net6/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net6/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Net7" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.588362, -0.15025, -0.525175 )
+
+[node name="NetBase" type="RigidBody" parent="Net7"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net7/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net7"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net7/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net7/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net7"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net7/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net7/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Net8" type="Position3D" parent="."]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.596838, -0.15025, -0.525175 )
+
+[node name="NetBase" type="RigidBody" parent="Net8"]
+
+editor/display_folded = true
+transform = Transform( 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0, 0.0795902, 0, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Net8/NetBase"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="Net8"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00516796, -0.0846622, 0 )
+nodes/node_a = NodePath("../NetBase")
+nodes/node_b = NodePath("../NetUp")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetUp" type="RigidBody" parent="Net8"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.09112, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net8/NetUp"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net8/NetUp"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PinJoint2" type="PinJoint" parent="Net8"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041545, -0.455723, 0 )
+nodes/node_a = NodePath("../NetUp")
+nodes/node_b = NodePath("../NetDown")
+solver/priority = 1
+collision/exclude_nodes = true
+params/bias = 0.3
+params/damping = 1.0
+params/impulse_clamp = 0.0
+_sections_unfolded = [ "Transform", "nodes" ]
+
+[node name="NetDown" type="RigidBody" parent="Net8"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109323, -0.460073, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock = 0
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="Net8/NetDown"]
+
+transform = Transform( 0.0274693, 0, 0, 0, 0.169688, 0, 0, 0, 0.0274693, 0, -0.176419, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Net8/NetDown"]
+
+transform = Transform( 0.0249753, 0, 0, 0, 0.170815, 0, 0, 0, 0.0330854, 0, -0.174395, 0 )
+shape = SubResource( 7 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+
