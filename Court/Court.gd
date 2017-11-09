@@ -14,6 +14,7 @@ func _process(delta):
 
 func _on_Area_area_entered( area ):
 	if area.global_transform.origin.y >= 2.2 and area.is_in_group("ball"):
+		get_node("Basket/Torus/Cena/Scene Root/AnimationPlayer").play("Net")
 		score +=1
 		get_viewport().get_camera().shake()
 		var ui = get_node("UI/AnimationPlayer")
