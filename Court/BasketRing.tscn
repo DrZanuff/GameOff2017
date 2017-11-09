@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=2]
-
-[ext_resource path="res://Net.tscn" type="PackedScene" id=1]
+[gd_scene load_steps=5 format=2]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -114,6 +112,7 @@ disabled = false
 [node name="Area" type="Area" parent="."]
 
 editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.873625, 0 )
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
@@ -140,7 +139,5 @@ reverb_bus_uniformity = 0.0
 transform = Transform( 0.556496, 0, 0, 0, 0.0669298, 0, 0, 0, 0.556496, 0, 0, 0 )
 shape = SubResource( 4 )
 disabled = false
-
-[node name="Net" parent="." instance=ExtResource( 1 )]
 
 

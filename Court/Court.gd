@@ -1,13 +1,18 @@
 extends Spatial
 
 var balls = []
+var score = 0
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	set_process(true)
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	$UI/Label.text = str("Score ",score)
+	pass
+
+
+func _on_Area_area_entered( area ):
+	if area.global_transform.origin.y >= 2.2 and area.is_in_group("ball"):
+		score +=1
+	pass # replace with function body

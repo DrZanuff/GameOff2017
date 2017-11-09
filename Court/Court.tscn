@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Court/Court.gd" type="Script" id=1]
 [ext_resource path="res://Court/Basket.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Court/Camera.gd" type="Script" id=4]
 [ext_resource path="res://Court/Rays.gd" type="Script" id=5]
 [ext_resource path="res://Court/Ball.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -129,6 +130,7 @@ disabled = false
 
 [node name="PlayerPivot" type="Position3D" parent="."]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.251016, 0.779722 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
@@ -327,4 +329,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69916, 0, 0 )
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63959, 0, 0 )
 
+[node name="UI" parent="." instance=ExtResource( 7 )]
 
+[connection signal="area_entered" from="Basket/Torus/Area" to="." method="_on_Area_area_entered"]
+
+
+[editable path="Basket"]
+[editable path="Basket/Torus"]
