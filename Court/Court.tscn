@@ -94,6 +94,8 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Basket" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
+
 [node name="Ground" type="MeshInstance" parent="."]
 
 editor/display_folded = true
@@ -130,7 +132,6 @@ disabled = false
 
 [node name="PlayerPivot" type="Position3D" parent="."]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.251016, 0.779722 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
@@ -309,6 +310,7 @@ _sections_unfolded = [ "Shadow" ]
 
 [node name="Rack" type="Position3D" parent="."]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04114, 0.850988, -2.36523 )
 
 [node name="Ball1" parent="Rack" instance=ExtResource( 6 )]

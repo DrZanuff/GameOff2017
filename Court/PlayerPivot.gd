@@ -52,7 +52,6 @@ func _physics_process(delta):
 	if get_node("PlayerBody/Rays").isOnFloor:
 		airShotStop = false
 	
-	print(speed)
 	
 	
 func shotBall():
