@@ -128,6 +128,8 @@ _sections_unfolded = [ "Angular", "Linear" ]
 
 [node name="Model" type="Spatial" parent="."]
 
+editor/display_folded = true
+
 [node name="MeshInstance" type="MeshInstance" parent="Model"]
 
 transform = Transform( 0.274728, 0, 0, 0, 0.274728, 0, 0, 0, 0.274728, 0, 0, 0 )

@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Court/Court.gd" type="Script" id=1]
-[ext_resource path="res://TextureNet.png" type="Texture" id=2]
+[ext_resource path="res://TextureNet2.png" type="Texture" id=2]
 [ext_resource path="res://Court/PlayerPivot.gd" type="Script" id=3]
 [ext_resource path="res://Court/Camera.gd" type="Script" id=4]
 [ext_resource path="res://Court/Rays.gd" type="Script" id=5]
@@ -153,7 +153,7 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Parameters" ]
+_sections_unfolded = [ "Albedo" ]
 
 [sub_resource type="ArrayMesh" id=10]
 
@@ -179,7 +179,7 @@ _sections_unfolded = [ "surface_1" ]
 [sub_resource type="Animation" id=11]
 
 resource_name = "Net"
-length = 1.0
+length = 1.6
 loop = false
 step = 0.05
 tracks/0/type = "value"
@@ -188,10 +188,10 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0, 1.0, 1.0 ]
+"values": [ 1.0, 0.0, 1.0, 1.0, 1.0, 1.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Net.001:blend_shapes/frame_0009")
@@ -199,10 +199,10 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.25, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.4, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Net.001:blend_shapes/frame_0010")
@@ -210,10 +210,10 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.25, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.6, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Net.001:blend_shapes/frame_0012")
@@ -221,10 +221,10 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.3, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Net.001:blend_shapes/frame_0014")
@@ -232,10 +232,10 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.15, 0.2, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.35, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.6, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Net.001:blend_shapes/frame_0015")
@@ -243,10 +243,10 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.15, 0.2, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.35, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.4, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Net.001:blend_shapes/frame_0016")
@@ -254,10 +254,10 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2, 0.25, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.35, 0.4, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.2, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Net.001:blend_shapes/frame_0017")
@@ -265,10 +265,10 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2, 0.25, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.35, 0.4, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.8, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Net.001:blend_shapes/frame_0019")
@@ -276,10 +276,10 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.45, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.8, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Net.001:blend_shapes/frame_0020")
@@ -287,10 +287,10 @@ tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3, 0.55, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.45, 0.7, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.2, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Net.001:blend_shapes/frame_0021")
@@ -298,10 +298,10 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.3, 0.35, 0.55, 0.65, 0.75, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.45, 0.5, 0.7, 0.8, 0.9, 1.1, 1.15, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.4, 0.0, 0.0, 0.4, 0.0, 0.0 ]
+"values": [ 0.0, 0.4, 0.0, 0.0, 0.4, 0.0, 0.0, 0.0, 0.4, 0.0 ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("Net.001:blend_shapes/frame_0022")
@@ -309,10 +309,10 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.3, 0.35, 0.55, 0.65, 0.75, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.45, 0.5, 0.7, 0.8, 0.9, 1.1, 1.15, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.6, 0.0, 0.0, 0.6, 0.0, 0.0 ]
+"values": [ 0.0, 0.6, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.6, 0.0 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("Net.001:blend_shapes/frame_0024")
@@ -320,10 +320,10 @@ tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.35, 0.45, 0.55, 0.75, 0.85, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.9, 1, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0 ]
+"values": [ 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Net.001:blend_shapes/frame_0026")
@@ -331,10 +331,10 @@ tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.45, 0.55, 0.85, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 0.7, 1, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.6, 0.0, 0.6, 0.0 ]
+"values": [ 0.0, 0.6, 0.0, 0.6, 0.0, 0.0, 0.0 ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Net.001:blend_shapes/frame_0027")
@@ -342,10 +342,10 @@ tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.45, 0.55, 0.85, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 0.7, 1, 1.1, 1.15, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.4, 0.0, 0.4, 0.0 ]
+"values": [ 0.0, 0.4, 0.0, 0.4, 0.0, 0.0, 0.0 ]
 }
 
 [sub_resource type="SpatialMaterial" id=12]
@@ -426,6 +426,7 @@ height = 1.0
 [node name="Court" type="Spatial"]
 
 script = ExtResource( 1 )
+time = 25.0
 
 [node name="LookPos" type="Position3D" parent="."]
 
@@ -605,7 +606,6 @@ disabled = false
 
 [node name="Cena" type="Spatial" parent="Basket/Torus"]
 
-editor/display_folded = true
 transform = Transform( 0.770902, 0, 0, 0, 0.770902, 0, 0, 0, 0.770902, 0, -0.508606, 0.0418212 )
 
 [node name="Scene Root" type="Spatial" parent="Basket/Torus/Cena"]
@@ -672,7 +672,6 @@ blend_shapes/frame_0045 = 0.0
 blend_shapes/frame_0046 = 0.0
 blend_shapes/frame_0047 = 0.0
 material/0 = null
-_sections_unfolded = [ "blend_shapes" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Basket/Torus/Cena/Scene Root"]
 
@@ -721,6 +720,7 @@ disabled = false
 
 [node name="PlayerPivot" type="Position3D" parent="."]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.251016, 0.779722 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]

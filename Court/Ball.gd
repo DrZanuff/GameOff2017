@@ -5,6 +5,7 @@ var alive = false
 var aliveTime = 0
 var fadeTime = 1
 var initialPos
+var missedBall = true
 
 func _ready():
 	randomize()
@@ -41,7 +42,12 @@ func wake():
 	aliveTime = 4.0
 	pass
 
+func score():
+	missedBall = false
+
 func sleep():
+	if missedBall:
+		get_parent().get_parent().shotsMissed += 1
 	alive = false
 	fadeTime = 1
 	$Model/MeshInstance.material_override.set("shader_param/alpha",fadeTime)
@@ -49,4 +55,6 @@ func sleep():
 	linear_velocity = Vector3()
 	set_axis_velocity(Vector3())
 	sleeping = true
+	missedBall = true
+	get_parent().get_parent().printScore()
 	pass
