@@ -14,6 +14,8 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("Reset"):
+		get_tree().reload_current_scene()
 	if get_parent().canPlay:
 		isJumping = !get_node("PlayerBody/Rays").isOnFloor
 		get_node("PlayerBody").translation.x = get_node("PlayerPos").translation.x #Lock X of the Player
@@ -44,9 +46,6 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_pressed("shot"):
 			shotBall()
-		
-		if Input.is_action_just_pressed("Reset"):
-			get_tree().reload_current_scene()
 		
 		if airShotStop:
 			speed = (speed * 0.5)

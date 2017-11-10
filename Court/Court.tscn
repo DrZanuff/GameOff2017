@@ -426,6 +426,7 @@ height = 1.0
 [node name="Court" type="Spatial"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 time = 25.0
 
 [node name="LookPos" type="Position3D" parent="."]
@@ -575,7 +576,6 @@ disabled = false
 
 [node name="Area" type="Area" parent="Basket/Torus"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.873625, 0 )
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -604,9 +604,15 @@ transform = Transform( 0.556496, 0, 0, 0, 0.0669298, 0, 0, 0, 0.556496, 0, 0, 0 
 shape = SubResource( 8 )
 disabled = false
 
+[node name="H_Check" type="Position3D" parent="Basket/Torus/Area"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163092, 0 )
+
 [node name="Cena" type="Spatial" parent="Basket/Torus"]
 
+editor/display_folded = true
 transform = Transform( 0.770902, 0, 0, 0, 0.770902, 0, 0, 0, 0.770902, 0, -0.508606, 0.0418212 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Scene Root" type="Spatial" parent="Basket/Torus/Cena"]
 
@@ -903,6 +909,8 @@ editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04114, 0.850988, -2.36523 )
 
 [node name="Ball1" parent="Rack" instance=ExtResource( 6 )]
+
+_sections_unfolded = [ "Angular", "Linear", "Transform" ]
 
 [node name="Ball2" parent="Rack" instance=ExtResource( 6 )]
 
