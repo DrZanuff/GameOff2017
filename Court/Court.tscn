@@ -436,6 +436,8 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Basket" type="Spatial" parent="."]
 
+editor/display_folded = true
+
 [node name="Base" type="Position3D" parent="Basket"]
 
 editor/display_folded = true

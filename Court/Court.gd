@@ -2,16 +2,15 @@ extends Spatial
 
 var balls = []
 var score = 0
-var shotsMade = 0
-var shotsMissed = 0
-var totalShots = 0
-var percentage = 0
+var shotsMade = 0.0
+var shotsMissed = 0.0
+var totalShots = 0.0
+var percentage = 0.0
 export(float) var time = 25.0
 var canPlay = true #Can the player play? Based on time
 
 func _ready():
 	set_process(true)
-	print(str( "um numero %02d e outro numero %02d" % [9 % 60, 10 % 60] ))
 	pass
 
 func _process(delta):
@@ -21,14 +20,14 @@ func _process(delta):
 	if time == 0:
 		get_node("UI/Timer").text ="00:00"
 		canPlay = false
-		get_node("UI/Performance").text = str("FG ",shotsMade," Miss ",shotsMissed," / \n Total Shots: ",totalShots)
+		percentage = floor( ( shotsMade / totalShots ) * 100 )
+		get_node("UI/Performance").text = printScore()
 	$UI/Label.text = str("Score ",score)
 	pass
 
 
 func _on_Area_area_entered( col ):
 	var h = get_node("Basket/Torus/Area/H_Check").global_transform.origin.y
-	print(h)
 	if col.global_transform.origin.y >= h and col.is_in_group("ball"):
 		col.get_parent().score()
 		shotsMade += 1
@@ -43,5 +42,6 @@ func _on_Area_area_entered( col ):
 	pass # replace with function body
 
 func printScore():
-	print( str("FG ",shotsMade," Miss ",shotsMissed," / \n Total Shots: ",totalShots) )
+	return(str("FG ",shotsMade," Miss ",shotsMissed," / \n Total Shots: ",totalShots," / Efficiency: ",percentage,"%") )
+	print( str("FG ",shotsMade," Miss ",shotsMissed," / \n Total Shots: ",totalShots," / Efficiency: ",percentage,"%") )
 	pass
