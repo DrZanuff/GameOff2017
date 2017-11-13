@@ -6,7 +6,7 @@ var shotsMade = 0.0
 var shotsMissed = 0.0
 var totalShots = 0.0
 var percentage = 0.0
-export(float) var time = 10.0
+export(float) var time = 120.0
 var canPlay = true #Can the player play? Based on time
 var showScore = false # Diz se pode mostar o Score
 
